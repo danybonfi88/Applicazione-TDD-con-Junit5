@@ -56,7 +56,7 @@ public class CittaTest {
     @RepeatedTest(5)
     @DisplayName("Test Caserma cittadina: Funzionamento DIMINUZIONE Soldati")
     void DimSoldatiTest() {
-        int n = citta.getSoldati();
+        int n = citta.casermaGetSoldati();
         citta.casermaDimSoldati(10);
         Assertions.assertEquals(n/2,
                 citta.casermaGetSoldati());
@@ -82,4 +82,3 @@ public class CittaTest {
 
 }
 
-}
