@@ -14,7 +14,7 @@ public class GranaioTest {
 
     @RepeatedTest(20)
     @DisplayName("Test Funzionamento PRODUZIONE e AUMENTO Risorse del Granaio ")
-    void PRodRisorseTest() {
+    void ProdRisorseTest() {
         int RisorseV = granaio.getRisorse();
         int Aumento = granaio.produciRisorse();
         granaio.aumRisorse(Aumento);
