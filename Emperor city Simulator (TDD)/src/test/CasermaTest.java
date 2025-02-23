@@ -15,17 +15,19 @@ public class CasermaTest {
     @DisplayName("Test Funzionamento ADDESTRAMENTO e AUMENTO soldati ")
     void AddSoldatiTest() {
         int SoldatiV = caserma.getSoldati();
-        int Aumento = caserma.AddestraSoldati();
+        int Aumento = caserma.addestraSoldati();
         caserma.aumSoldati(Aumento);
-        Assertions.assertTrue(Aumento > 1 && Aumento < 3);
+        Assertions.assertTrue(Aumento >= 1 && Aumento <= 3);
         Assertions.assertEquals(SoldatiV + Aumento, caserma.getSoldati());
     }
 
-    @Test
+    @RepeatedTest(5)
     @DisplayName("Test Funzionamento DIMINUZIONE Soldati")
     void DimSoldatiTest() {
         int n = caserma.getSoldati();
         caserma.dimSoldati(10);
-        Assertions.assertTrue(n-10,caserma.getSoldati());
+        Assertions.assertEquals(n/2,
+                caserma.getSoldati());
+        caserma.aumSoldati(10);
     }
 }

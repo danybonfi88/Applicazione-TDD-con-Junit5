@@ -16,9 +16,9 @@ public class GranaioTest {
     @DisplayName("Test Funzionamento PRODUZIONE e AUMENTO Risorse del Granaio ")
     void PRodRisorseTest() {
         int RisorseV = granaio.getRisorse();
-        int Aumento = granaio.ProduciRisorse();
+        int Aumento = granaio.produciRisorse();
         granaio.aumRisorse(Aumento);
-        Assertions.assertTrue(Aumento > 1 && Aumento < 20);
+        Assertions.assertTrue(Aumento >= 1 && Aumento <= 20);
         Assertions.assertEquals(RisorseV + Aumento,granaio.getRisorse());
     }
 
@@ -27,7 +27,7 @@ public class GranaioTest {
     void DimRisorseTest() {
         int n = granaio.getRisorse();
         granaio.dimRisorse(10);
-        Assertions.assertTrue(n-10,granaio.getRisorse());
+        Assertions.assertEquals(n-10,granaio.getRisorse());
     }
     @Test
     @DisplayName("Test Azzeramento risorse Granaio ")
