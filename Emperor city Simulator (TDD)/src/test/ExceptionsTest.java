@@ -29,7 +29,6 @@ public class ExceptionsTest {
     @Test
     @DisplayName("Test Invasione Avvenuta ")
     void InvasioneAvvenutaTest() {
-        // Simuliamo una città con pochi soldati
         citta.casermaAumSoldati(30);
 
         Exception e = assertThrows(InvasioneAvvenutaException.class, () -> Main.checkSoldatiInvasione(citta));
@@ -38,29 +37,29 @@ public class ExceptionsTest {
 
     @Test
     @DisplayName("Test Addestramento Soldati Fallito ")
-    void testAddestramentoSoldati()  {
+    void AddestramentoSoldatiTest()  {
         citta.granaioAumRisorse(50);
-        int soldatiAddestrati = 300;
+        int soldatiAddestrati = 50;
 
-        Exception e = assertThrows( AddestramentoFallitoException.class, Main.checkAddestraSoldati(citta, soldatiAddestrati));
+        Exception e = assertThrows(AddestramentoFallitoException.class,() -> Main.checkAddestraSoldati(citta, soldatiAddestrati));
         assertEquals("Non è stato possibile addestrare alcuni soldati, risorse insufficienti!", e.getMessage());
     }
 
     @Test
     @DisplayName("Test Risorse Massime Raggiunte ")
-    void testRisorseMAX()  {
+    void RisorseMaxTest() {
         citta.granaioAumRisorse(500);
         int NRisorse = citta.granaioProduciRisorse();
-        Exception e = assertThrows(MassimoRisorseException.class,Main.checkRisorseMax(citta,NRisorse));
-        assertEquals("le risorse ricevute sono state scartate, il granaio è già pieno di risorse!!",e.getMessage());
+        Exception e = assertThrows(MassimoRisorseException.class,() -> Main.checkRisorseMax(citta,NRisorse));
+        assertEquals("le risorse ricevute sono state scartate, il granaio è già pieno di risorse!",e.getMessage());
     }
 
     @Test
     @DisplayName("Test Risorse insufficienti x inviare")
-    void testRisorseInvio()  {
+    void RisorseInvioTest()  {
         citta.granaioAumRisorse(0);
         int inviate = citta.portoInviaRisorse();
-        Exception e = assertThrows(ScarsitaRisorseException.class,Main.checkRisorseInvio(citta, inviate));
+        Exception e = assertThrows(ScarsitaRisorseException.class,() -> Main.checkRisorseInvio(citta, inviate));
         assertEquals("L'invio di risorse è fallito, risorse insufficienti!",e.getMessage());
     }
 
